@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="57dp"
+        android:layout_marginTop="53dp"
         android:hint="Name" />
 
     <EditText
@@ -14,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/nameEditText"
+        android:layout_marginTop="17dp"
         android:hint="Username" />
 
     <EditText
@@ -21,27 +25,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/usernameEditText"
-        android:inputType="textPassword"
-        android:hint="Password" />
-
-
+        android:layout_marginTop="14dp"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/confirmPasswordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordEditText"
-        android:inputType="textPassword"
-        android:hint="Confirm Password" />
+        android:layout_marginTop="11dp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/confirmPasswordEditText"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/confirmPasswordEditText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="150dp"
         android:text="Register" />
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="208dp"
+        android:layout_marginTop="350dp"
+        app:srcCompat="@drawable/reg" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:srcCompat="@drawable/register" />
 
 
 </RelativeLayout>

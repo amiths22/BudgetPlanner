@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF">
+        android:background="#D3D3D3">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
@@ -25,10 +25,11 @@
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:layout_marginStart="105dp"
+            android:layout_marginStart="132dp"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="25dp"
             android:text="Dashboard"
+            android:textColor="@color/black"
             android:textSize="30sp"
             app:fontFamily="sans-serif"
             app:layout_constraintBottom_toTopOf="@+id/progressBar2"
@@ -88,6 +89,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="Expense"
+                        android:textColor="@color/black"
                         android:textSize="24sp"
                         app:fontFamily="sans-serif" />
                 </RelativeLayout>
@@ -120,6 +122,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="Budget"
+                        android:textColor="@color/black"
                         android:textSize="24sp"
                         app:fontFamily="sans-serif" />
                 </RelativeLayout>
@@ -162,6 +165,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="Goals"
+                        android:textColor="@color/black"
                         android:textSize="24sp"
                         app:fontFamily="sans-serif" />
                 </RelativeLayout>
@@ -193,6 +197,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="Activity"
+                        android:textColor="@color/black"
                         android:textSize="24sp"
                         app:fontFamily="sans-serif" />
                 </RelativeLayout>
