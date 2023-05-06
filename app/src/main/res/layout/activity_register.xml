@@ -48,6 +48,20 @@
         android:layout_marginEnd="150dp"
         android:text="Register" />
 
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/registerButton"
+        android:layout_marginTop="20dp"
+        android:text="Register fire" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="match_parent"
