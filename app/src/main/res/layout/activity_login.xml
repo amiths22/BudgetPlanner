@@ -7,9 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="10dp"
         android:background="#D3D3D3"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="20dp">
 
       <!--  <ImageView
             android:id="@+id/imageView"
@@ -39,21 +40,17 @@
             android:layout_height="wrap_content"
             android:visibility="gone" />-->
 
-        <Button
-            android:id="@+id/google_signIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:text="Google Signin" />
-
-
 
         <EditText
             android:id="@+id/emailId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Email"
-            android:padding="20dp"/>
+            android:padding="20dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:id="@+id/password"
@@ -61,21 +58,46 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:padding="20dp"/>
+            android:padding="20dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="10dp"/>
 
         <Button
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:background="@color/black"
-            android:text="Login" />
+            android:text="Login"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="10dp"/>
+
+
+        <Button
+            android:id="@+id/google_signIn"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:background="@color/black"
+            android:text="Google Signin" />
 
         <Button
             android:id="@+id/forgotPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="68dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/black"
             android:text="Forgot Password?" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="316dp"
+            app:srcCompat="@drawable/login" />
 
 
     </LinearLayout>
