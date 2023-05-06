@@ -30,6 +30,7 @@
         <activity android:name=".BudgetActivity"/>
         <activity android:name=".GoalActivity"/>
         <activity android:name=".ActivityActivity"/>
+        <activity android:name=".ResetPasswordActivity"/>
     </application>
 
 </manifest>
