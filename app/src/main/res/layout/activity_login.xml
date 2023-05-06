@@ -11,28 +11,48 @@
         android:background="#D3D3D3"
         android:orientation="vertical">
 
-        <ImageView
+      <!--  <ImageView
             android:id="@+id/imageView"
-            android:layout_width="315dp"
-            android:layout_height="231dp"
-            android:layout_alignParentStart="true"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="68dp"
-            android:layout_marginEnd="95dp"
+            android:layout_alignParentStart="true"
             android:layout_marginBottom="109dp"
-            app:srcCompat="@drawable/log" />
+            android:layout_marginEnd="95dp"
+            android:layout_marginStart="68dp"
+            app:srcCompat="@drawable/log" /> -->
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            app:srcCompat="@drawable/logIn" />
 
-        <EditText
-            android:id="@+id/username"
+
+       <!-- <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_signIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"  />-->
+       <!-- <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_sign_in_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />-->
+
+        <Button
+            android:id="@+id/google_signIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:text="Google Signin" />
+
+
+
+        <EditText
+            android:id="@+id/emailId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
             android:padding="20dp"/>
 
         <EditText
@@ -50,8 +70,21 @@
             android:background="@color/black"
             android:text="Login" />
 
+        <Button
+            android:id="@+id/forgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:text="Forgot Password?" />
+
 
     </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 
 </RelativeLayout>
