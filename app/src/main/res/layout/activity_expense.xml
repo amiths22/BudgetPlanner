@@ -106,94 +106,69 @@
         tools:layout_editor_absoluteX="54dp" />
 
     <TableLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="450dp"
+        android:id="@+id/expenseTable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Table header row -->
-        <TableRow>
+        <!-- Table Header Row -->
+        <TableRow
+            android:background="@color/table_header_color"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:id="@+id/tr1">
 
             <TextView
-                android:layout_width="40dp"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="ID" />
+                android:text="Expanse Name"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:background="@color/table_header_color"
+                android:textColor="@color/table_header_text_color"
+                android:layout_marginRight="1dp"/>
 
             <TextView
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Expanse Name" />
+                android:text="Expense Amount"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:background="@color/table_header_color"
+                android:textColor="@color/table_header_text_color"
+                android:layout_marginRight="1dp"/>
 
             <TextView
-                android:layout_width="87dp"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Expense Amount" />
+                android:text="Expense Date"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:background="@color/table_header_color"
+                android:textColor="@color/table_header_text_color"
+                android:layout_marginRight="1dp"/>
 
-            <TextView
-                android:layout_width="20dp"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Expense Date" />
-
-            <TextView
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Action" />
         </TableRow>
 
-        <!-- Table rows -->
-        <TableRow>
+        <!-- Table Rows -->
+       <!-- <TableRow
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp">
 
             <TextView
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:id="@+id/id"
-                android:text="1" />
+                android:padding="10dp"
+                android:background="@drawable/table_cell_border"
+                android:layout_marginRight="1dp"/>
 
             <TextView
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:id="@+id/eName"
-                android:text="John Doe" />
+                android:padding="10dp"
+                android:background="@drawable/table_cell_border"
+                android:layout_marginRight="1dp"/>
 
             <TextView
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:id="@+id/eAmount"
-                android:text="25" />
 
-            <TextView
-                android:layout_width="132dp"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:id="@+id/eDate"
-                android:text="10/25/23" />
+                android:padding="10dp"
+                android:background="@drawable/table_cell_border"
+                android:layout_marginRight="1dp"/>
 
-            <LinearLayout
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:padding="8dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="Edit"
-                    android:src="@drawable/ic_edit" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="Delete"
-                    android:src="@drawable/ic_delete"
-                    android:layout_marginLeft="10dp"/>
-
-            </LinearLayout>
-        </TableRow>
-
-        <!-- Add more rows as needed -->
+        </TableRow>-->
 
     </TableLayout>
 
@@ -206,6 +181,25 @@
         android:text="Expense Details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expenses.png" />
+
+    <Button
+        android:id="@+id/showDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Show details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
