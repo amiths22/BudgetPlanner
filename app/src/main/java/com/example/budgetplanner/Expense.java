@@ -5,9 +5,24 @@ import java.time.LocalDate;
 public class Expense {
 
     String eName,eAmount;
-    String eDate;
+    String eDate,eMonthyear;
+
+    public String geteMonthyear() {
+        return eMonthyear;
+    }
+
+    public void seteMonthyear(String eMonthyear) {
+        this.eMonthyear = eMonthyear;
+    }
 
     public Expense() {
+    }
+
+    public Expense(String eName, String eAmount, String eDate, String eMonthyear) {
+        this.eName = eName;
+        this.eAmount = eAmount;
+        this.eDate = eDate;
+        this.eMonthyear = eMonthyear;
     }
 
     public Expense(String eName, String eAmount, String eDate) {

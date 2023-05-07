@@ -2,6 +2,7 @@ package com.example.budgetplanner;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -25,7 +26,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class ExpenseActivity extends AppCompatActivity {
 
@@ -63,8 +68,20 @@ public class ExpenseActivity extends AppCompatActivity {
                 eAmount = binding.editTextNumberDecimal.getText().toString();
                 eDate = binding.editTextDate.getText().toString();
 
+
                 if(!eName.isEmpty() && !eAmount.isEmpty() && !eDate.isEmpty()){
-                    Expense expense = new Expense(eName,eAmount,eDate);
+                    String dateString = eDate;
+                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    Date date = null;
+                    try {
+                        date = dateFormat.parse(dateString);
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    dateFormat = new SimpleDateFormat("MMMMyyyy");
+                    String monthYearString = dateFormat.format(date);
+                    Log.d("date in exp",monthYearString);
+                    Expense expense = new Expense(eName,eAmount,eDate,monthYearString);
                     db = FirebaseDatabase.getInstance();
                     reference = db.getReference();
                     String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
