@@ -3,92 +3,259 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#D3D3D3">
+
+    <Button
+        android:id="@+id/goalCompute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="56dp"
+        android:text="Compute"
+        app:layout_constraintStart_toEndOf="@+id/idBtnPickDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
+
+    <EditText
+        android:id="@+id/savingResult"
+        android:layout_width="131dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:text="Savings(per Month)"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalDuration" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:background="#00008577"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="73dp"
-        android:text="Goal Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="89dp"
+        android:layout_width="131dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="30dp"
-        android:text="Goal duration"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:text="Goal Name"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
         android:id="@+id/editTextNumberDecimal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="31dp"
+        android:layout_width="131dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="24dp"
+        android:text="Goal Amount"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <!--on below line we are creating
+        a button for date picker-->
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="30dp"
-        android:text="Goal Amount"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="16dp"
+        android:text="Date to Achive"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="55dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
+
+    <TextView
+        android:id="@+id/goalDuration"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_above="@id/idBtnPickDate"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Date"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/idBtnPickDate"
+        android:layout_width="113dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Pick Date"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/goalDuration"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="28dp"
         android:text="Add"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal2" />
+        app:layout_constraintTop_toBottomOf="@+id/goalCompute" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:id="@+id/expenseTable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Table Header Row -->
+        <TableRow
+            android:background="@color/table_header_color"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:id="@+id/tr1">
+
+            <TextView
+                android:layout_marginRight="1dp"
+                android:background="@color/table_header_color"
+                android:padding="10dp"
+                android:text="Goal Name"
+                android:textColor="@color/table_header_text_color"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_marginRight="1dp"
+                android:background="@color/table_header_color"
+                android:padding="10dp"
+                android:text="Goal Amount"
+                android:textColor="@color/table_header_text_color"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_marginRight="1dp"
+                android:background="@color/table_header_color"
+                android:padding="10dp"
+                android:text="Goal Date"
+                android:textColor="@color/table_header_text_color"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_marginRight="1dp"
+                android:background="@color/table_header_color"
+                android:padding="10dp"
+                android:text="Saving"
+                android:textColor="@color/table_header_text_color"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <!-- Table Rows -->
+        <!-- <TableRow
+             android:layout_marginBottom="1dp"
+             android:layout_marginTop="1dp">
+
+             <TextView
+                 android:padding="10dp"
+                 android:background="@drawable/table_cell_border"
+                 android:layout_marginRight="1dp"/>
+
+             <TextView
+                 android:padding="10dp"
+                 android:background="@drawable/table_cell_border"
+                 android:layout_marginRight="1dp"/>
+
+             <TextView
+
+                 android:padding="10dp"
+                 android:background="@drawable/table_cell_border"
+                 android:layout_marginRight="1dp"/>
+
+
+         </TableRow>-->
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="87dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="11dp"
+        android:text="Goal Details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showDetails" />
+
+    <Button
+        android:id="@+id/showDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:text="Show details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savingResult" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginTop="28dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

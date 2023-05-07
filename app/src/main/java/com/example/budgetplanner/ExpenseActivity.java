@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.budgetplanner.databinding.ActivityExpenseBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,8 +66,10 @@ public class ExpenseActivity extends AppCompatActivity {
                 if(!eName.isEmpty() && !eAmount.isEmpty() && !eDate.isEmpty()){
                     Expense expense = new Expense(eName,eAmount,eDate);
                     db = FirebaseDatabase.getInstance();
-                    reference = db.getReference("Expense");
-                    reference.child(eName).setValue(expense).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    reference = db.getReference();
+                    String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                    reference.child("users").child(uid).child("expense").child(eName).setValue(expense).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -84,7 +87,8 @@ public class ExpenseActivity extends AppCompatActivity {
         });
 
         showButton.setOnClickListener(view -> {
-            reference = FirebaseDatabase.getInstance().getReference("Expense");
+            String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+            reference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("expense");
             tableLayout = findViewById(R.id.expenseTable);
 
             populateTable();
