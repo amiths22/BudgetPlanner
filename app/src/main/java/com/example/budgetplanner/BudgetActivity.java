@@ -15,6 +15,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -90,7 +92,8 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
         });
 
         showBudgetButton.setOnClickListener(view -> {
-            reference = FirebaseDatabase.getInstance().getReference("Budget");
+            String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+            reference = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("budget");
             tableLayout = findViewById(R.id.budgetTable);
 
             populateTable();
@@ -199,11 +202,16 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
         String year = yearSpinner.getSelectedItem().toString();
 
         // Push data to Firebase Realtime Database
-        DatabaseReference dataRef = reference.child("Budget");
-        String key = dataRef.push().getKey();
-        dataRef.child(key).child("month").setValue(month);
-        dataRef.child(key).child("year").setValue(year);
-        dataRef.child(key).child("amount").setValue(amount);
+        String uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference dataRef = reference.child("users").child(uid).child("budget").child(month+year);
+
+
+       // reference.child("users").child(uid).child("expense").child(eName).setValue(expense).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+          //  String key = dataRef.push().getKey();
+        dataRef.child("month").setValue(month);
+        dataRef.child("year").setValue(year);
+        dataRef.child("amount").setValue(amount);
 
         // Clear input fields
         monthSpinner.setSelection(0);

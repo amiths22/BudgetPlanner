@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private String TAG = DashboardActivity.class.getSimpleName();
 
     private ProgressBar progressBar;
+    private ProgressBar dataAnalysis;
+    private Runnable updateRatingRunnable;
+    private Handler handler;
     private Context context;
 
     Button btLogout;
@@ -69,6 +73,20 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
 
+
+
+
+
+        handler = new Handler();
+        updateRatingRunnable = new Runnable() {
+            @Override
+            public void run() {
+                dataAnalysis.setMax(1000);
+                dataAnalysis.setProgress(400);
+                handler.postDelayed(this, 2000); // repeat every 2 seconds
+            }
+        };
+        handler.post(updateRatingRunnable);
         setUserData();
 
         getAuthenticationProvider();
@@ -217,6 +235,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         //tv_user_name = findViewById(R.id.tv_user_name);
         //tv_user_email = findViewById(R.id.tv_user_email);
         btLogout = findViewById(R.id.BtnLogout);
+        dataAnalysis=findViewById(R.id.progressBar2);
         //btn_change_email = findViewById(R.id.btn_change_email);
         //btn_change_password = findViewById(R.id.btn_change_password);
       //  btn_remove_user = findViewById(R.id.btn_remove_user);
