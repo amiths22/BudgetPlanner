@@ -1,14 +1,179 @@
 package com.example.budgetplanner;
-
-import android.os.Bundle;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class BudgetActivity extends AppCompatActivity {
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class BudgetActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    private Spinner monthSpinner;
+    private TextView amountTextView;
+    private Button pushButton,showBudgetButton,deleteBudgetButton;
+    private DatabaseReference reference;
+
+    private TableLayout tableLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
+
+        // Initialize Firebase
+        reference = FirebaseDatabase.getInstance().getReference();
+
+        // Get references to UI views
+        monthSpinner = findViewById(R.id.monthSpinner);
+        amountTextView = findViewById(R.id.amountEditText);
+        pushButton = findViewById(R.id.pushButton);
+        showBudgetButton = findViewById(R.id.showBudget);
+        deleteBudgetButton = findViewById(R.id.deleteBudget);
+
+        // Set up spinner with month names
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.months, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        monthSpinner.setAdapter(adapter);
+        monthSpinner.setOnItemSelectedListener(this);
+
+        // Set click listener for push button
+        pushButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pushToFirebase();
+            }
+        });
+
+        showBudgetButton.setOnClickListener(view -> {
+            reference = FirebaseDatabase.getInstance().getReference("Budget");
+            tableLayout = findViewById(R.id.budgetTable);
+
+            populateTable();
+        });
+
+    }
+
+    private void populateTable() {
+
+        // Attach a ValueEventListener to the databaseReference to read the data
+
+        String key;
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Clear the TableLayout before populating it with data
+
+
+                // Iterate through each child node in the Realtime Database
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+
+                    // Get the values of each column from the child node
+
+                    String column1Value = childSnapshot.child("month").getValue(String.class);
+                    String column2Value = childSnapshot.child("amount").getValue(String.class);
+
+
+
+                    // Create a new row in the TableLayout
+                    TableRow tableRow = new TableRow(BudgetActivity.this);
+
+                    // Create TextViews for each column and add them to the TableRow
+                    TextView column1TextView = new TextView(BudgetActivity.this);
+                    column1TextView.setText(column1Value);
+                    tableRow.addView(column1TextView);
+
+                    TextView column2TextView = new TextView(BudgetActivity.this);
+                    column2TextView.setText(column2Value);
+                    tableRow.addView(column2TextView);
+
+
+                    tableRow.setTag(childSnapshot.getKey());
+                    tableRow.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            deleteBudgetButton.setEnabled(true);
+                            String key = (String) v.getTag();
+                            deleteBudgetButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+
+                                public void onClick(View view) {
+                                    reference.child(key).removeValue();
+                                    Toast.makeText(BudgetActivity.this, "Deleted the data", Toast.LENGTH_LONG).show();
+                                    int index = getIndexFromKey(key);
+                                    if (index >= 1) {
+                                        tableLayout.removeViews(index, 1);
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    // Add the TableRow to the TableLayout
+                    tableLayout.addView(tableRow);
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+            private int getIndexFromKey(String key) {
+                int index = -1;
+                for (int i = 1; i < tableLayout.getChildCount(); i++) {
+                    View row = tableLayout.getChildAt(i);
+                    if (key.equals(row.getTag())) {
+                        index = i;
+                        break;
+                    }
+                }
+                return index;
+            }
+
+        });
+    }
+
+    private void pushToFirebase() {
+        String month = monthSpinner.getSelectedItem().toString();
+        String amount = amountTextView.getText().toString();
+
+        // Push data to Firebase Realtime Database
+        DatabaseReference dataRef = reference.child("Budget");
+        String key = dataRef.push().getKey();
+        dataRef.child(key).child("month").setValue(month);
+        dataRef.child(key).child("amount").setValue(amount);
+
+        // Clear input fields
+        monthSpinner.setSelection(0);
+        amountTextView.setText("");
+
+        // Display success message
+        Toast.makeText(this, "Data pushed to Firebase", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        // Do nothing
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        // Do nothing
     }
 }
+
