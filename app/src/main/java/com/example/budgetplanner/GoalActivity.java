@@ -1,12 +1,14 @@
 package com.example.budgetplanner;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -49,6 +51,8 @@ public class GoalActivity extends AppCompatActivity {
     private Button pickDateBtn;
     private TextView selectedDateTV;
 
+    ImageButton backButton;
+
     Button showButton,deleteButton,addbutton,computeButton;
 
     EditText savingResult;
@@ -64,6 +68,7 @@ public class GoalActivity extends AppCompatActivity {
         computeButton=findViewById(R.id.goalCompute);
         savingResult=findViewById(R.id.savingResult);
         addbutton=findViewById(R.id.button);
+        backButton = findViewById(R.id.backButton);
 
         deleteButton.setEnabled(false);
         addbutton.setEnabled(false);
@@ -213,6 +218,15 @@ public class GoalActivity extends AppCompatActivity {
 
             populateTable();
         });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GoalActivity.this,DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 

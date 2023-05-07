@@ -198,6 +198,7 @@ import android.view.View;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -232,6 +233,8 @@ public class ActivityActivity extends AppCompatActivity implements View.OnClickL
     private FirebaseUser currentUser;
     private Dialog dialog;
 
+    ImageButton backButton;
+
     public int getAuthProvider() {
         return authProvider;
     }
@@ -252,10 +255,19 @@ public class ActivityActivity extends AppCompatActivity implements View.OnClickL
         setClickListeners();
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
+        backButton = findViewById(R.id.backButton);
 
         setUserData();
 
         getAuthenticationProvider();
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityActivity.this,DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
