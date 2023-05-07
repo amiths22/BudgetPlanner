@@ -1,11 +1,14 @@
 package com.example.budgetplanner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -27,6 +30,8 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
 
     private TableLayout tableLayout;
 
+    ImageButton backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,7 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
         showBudgetButton = findViewById(R.id.showBudget);
         deleteBudgetButton = findViewById(R.id.deleteBudget);
         yearSpinner = findViewById(R.id.yearSpinner);
+        backButton = findViewById(R.id.backButton);
 
         // Set up spinner with month names
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -88,6 +94,14 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
             tableLayout = findViewById(R.id.budgetTable);
 
             populateTable();
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BudgetActivity.this,DashboardActivity.class);
+                startActivity(intent);
+            }
         });
 
     }

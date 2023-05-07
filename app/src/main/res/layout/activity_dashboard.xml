@@ -203,7 +203,7 @@
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        app:srcCompat="@drawable/activity" />
+                        app:srcCompat="@drawable/account" />
 
                     <TextView
                         android:id="@+id/textView7"
@@ -212,7 +212,7 @@
                         android:layout_below="@id/activity"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="Activity"
+                        android:text="Account"
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         app:fontFamily="sans-serif" />

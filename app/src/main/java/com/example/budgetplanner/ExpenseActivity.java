@@ -1,5 +1,6 @@
 package com.example.budgetplanner;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +39,9 @@ public class ExpenseActivity extends AppCompatActivity {
     Button showButton,deleteButton;
 
 
+    ImageButton backButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,7 @@ public class ExpenseActivity extends AppCompatActivity {
         showButton = findViewById(R.id.showDetails);
         deleteButton = findViewById(R.id.buttonDelete);
         deleteButton.setEnabled(false);
-
+        backButton = findViewById(R.id.backButton);
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +89,17 @@ public class ExpenseActivity extends AppCompatActivity {
 
             populateTable();
         });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ExpenseActivity.this,DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
 
 
 

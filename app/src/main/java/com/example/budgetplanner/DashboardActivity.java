@@ -164,8 +164,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         String userEmail = getIntent().getStringExtra(Constants.KEY_USER_EMAIL);
         String userName = getIntent().getStringExtra(Constants.KEY_USER_DISPLAY_NAME);
 
-        Log.d("username",userName);
-        Log.d("userEmail",userEmail);
+/*        Log.d("username",userName);
+        Log.d("userEmail",userEmail);*/
 
        // user_name.setText(userName);
        // user_email.setText(userEmail);
