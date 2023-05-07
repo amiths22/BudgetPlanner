@@ -120,7 +120,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DashboardActivity.this, ActivityActivity.class);
+               // Intent intent = new Intent(DashboardActivity.this, ActivityActivity.class);
+                String email = firebaseUser.getEmail();
+                String displayName = firebaseUser.getDisplayName();
+                Intent intent = new Intent(context, ActivityActivity.class);
+                intent.putExtra(Constants.KEY_USER_EMAIL, email);
+                intent.putExtra(Constants.KEY_USER_DISPLAY_NAME, displayName);
                 startActivity(intent);
             }
         });

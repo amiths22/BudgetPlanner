@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/nameEditText"
         android:layout_marginTop="17dp"
-        android:hint="Username"
+        android:hint="Email"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
         android:layout_marginBottom="10dp"/>
@@ -51,7 +51,7 @@
         android:layout_marginRight="18dp"
         android:layout_marginBottom="10dp"/>
 
-    <Button
+    <!--<Button
         android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,13 +59,13 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="19dp"
         android:layout_marginEnd="159dp"
-        android:text="Register" />
+        android:text="Register" />-->
 
     <Button
         android:id="@+id/btnregister"
         android:layout_width="192dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/registerButton"
+        android:layout_below="@+id/confirmPasswordEditText"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="159dp"
@@ -73,7 +73,7 @@
         android:layout_marginEnd="120dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-        android:text="Register fire" />
+        android:text="Register" />
 
     <ProgressBar
         android:id="@+id/progressbar"

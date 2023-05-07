@@ -1,6 +1,6 @@
 package com.example.budgetplanner;
 
-import android.content.ContentValues;
+
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
-        registerButton = findViewById(R.id.registerButton);
+        //registerButton = findViewById(R.id.registerButton);
 
         // Open the database
        /* database = openOrCreateDatabase("userDB", MODE_PRIVATE, null);

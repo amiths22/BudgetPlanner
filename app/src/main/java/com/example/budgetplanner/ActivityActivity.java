@@ -308,7 +308,6 @@ public class ActivityActivity extends AppCompatActivity implements View.OnClickL
     private void setUserData() {
         String userEmail = getIntent().getStringExtra(Constants.KEY_USER_EMAIL);
         String userName = getIntent().getStringExtra(Constants.KEY_USER_DISPLAY_NAME);
-
         tv_user_name.setText(userName);
         tv_user_email.setText(userEmail);
     }
