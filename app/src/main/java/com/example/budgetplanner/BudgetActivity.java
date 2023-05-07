@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class BudgetActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private Spinner monthSpinner;
+    private Spinner monthSpinner,yearSpinner;
     private TextView amountTextView;
     private Button pushButton,showBudgetButton,deleteBudgetButton;
     private DatabaseReference reference;
@@ -41,6 +41,7 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
         pushButton = findViewById(R.id.pushButton);
         showBudgetButton = findViewById(R.id.showBudget);
         deleteBudgetButton = findViewById(R.id.deleteBudget);
+        yearSpinner = findViewById(R.id.yearSpinner);
 
         // Set up spinner with month names
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -48,6 +49,31 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(adapter);
         monthSpinner.setOnItemSelectedListener(this);
+
+
+        /*ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+                R.array.years, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        yearSpinner.setAdapter(adapter2);
+        yearSpinner.setOnItemSelectedListener(this);*/
+
+// Get the integer array from strings.xml
+        int[] myIntegers = getResources().getIntArray(R.array.years);
+
+// Convert the integer array to an array of Strings
+        String[] stringArray = new String[myIntegers.length];
+        for (int i = 0; i < myIntegers.length; i++) {
+            stringArray[i] = String.valueOf(myIntegers[i]);
+        }
+
+// Create an ArrayAdapter with the string array
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringArray);
+
+// Set the drop-down layout style
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+// Set the adapter on the spinner
+        yearSpinner.setAdapter(adapter2);
 
         // Set click listener for push button
         pushButton.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +109,8 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
                     // Get the values of each column from the child node
 
                     String column1Value = childSnapshot.child("month").getValue(String.class);
-                    String column2Value = childSnapshot.child("amount").getValue(String.class);
+                    String column2Value = childSnapshot.child("year").getValue(String.class);
+                    String column3Value = childSnapshot.child("amount").getValue(String.class);
 
 
 
@@ -98,6 +125,10 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
                     TextView column2TextView = new TextView(BudgetActivity.this);
                     column2TextView.setText(column2Value);
                     tableRow.addView(column2TextView);
+
+                    TextView column3TextView = new TextView(BudgetActivity.this);
+                    column3TextView.setText(column3Value);
+                    tableRow.addView(column3TextView);
 
 
                     tableRow.setTag(childSnapshot.getKey());
@@ -151,11 +182,13 @@ public class BudgetActivity extends AppCompatActivity implements AdapterView.OnI
     private void pushToFirebase() {
         String month = monthSpinner.getSelectedItem().toString();
         String amount = amountTextView.getText().toString();
+        String year = yearSpinner.getSelectedItem().toString();
 
         // Push data to Firebase Realtime Database
         DatabaseReference dataRef = reference.child("Budget");
         String key = dataRef.push().getKey();
         dataRef.child(key).child("month").setValue(month);
+        dataRef.child(key).child("year").setValue(year);
         dataRef.child(key).child("amount").setValue(amount);
 
         // Clear input fields

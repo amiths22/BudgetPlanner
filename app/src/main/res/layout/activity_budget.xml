@@ -43,6 +43,14 @@
             android:layout_marginTop="40dp"
             android:entries="@array/months" />
 
+        <Spinner
+            android:id="@+id/yearSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="40dp"
+            android:entries="@array/years" />
+
         <Button
             android:id="@+id/pushButton"
             android:layout_width="wrap_content"
@@ -90,7 +98,16 @@
                 android:text="Budget Month"
                 android:textStyle="bold"
                 android:padding="10dp"
-                android:layout_width="210dp"
+                android:layout_width="150dp"
+                android:background="@color/table_header_color"
+                android:textColor="@color/table_header_text_color"
+                android:layout_marginRight="1dp"/>
+
+            <TextView
+                android:text="Budget Year"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:layout_width="130dp"
                 android:background="@color/table_header_color"
                 android:textColor="@color/table_header_text_color"
                 android:layout_marginRight="1dp"/>
